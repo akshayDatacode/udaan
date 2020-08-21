@@ -48,23 +48,25 @@ class HomePage extends Component {
     return (
       <>
         <div className="row">
-          <div className="col-2"></div>
-          <div className="col-8">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
             <div className="row">
-              <UserRefForm emiCalculator={this.emiCalculator} />
+              <div className="col-12"><UserRefForm emiCalculator={this.emiCalculator} /></div>
             </div>
             {this.state.emiAmount > 0 && (
               <div className="row">
-                <EMICalculatorModal
-                  emiAmount={this.state.emiAmount}
-                  fileCharge={this.state.fileCharge}
-                  stampCharge={this.state.stampCharge}
-                  persentPayment={this.state.persentPayment}
-                />
+                <div className="col-12 text-center">
+                  <EMICalculatorModal
+                    emiAmount={this.state.emiAmount}
+                    fileCharge={this.state.fileCharge}
+                    stampCharge={this.state.stampCharge}
+                    persentPayment={this.state.persentPayment}
+                  />
+                </div>
               </div>
             )}
           </div>
-          <div className="col-2"></div>
+          <div className="col-md-2"></div>
         </div>
       </>
     );
