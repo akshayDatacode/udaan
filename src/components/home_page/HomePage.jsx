@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import UserRefForm from "../user";
+import ApplicantRegForm from "../applicant/component";
 import EMICalculatorModal from "../emi_calculator";
+import { Link } from "react-router-dom";
+import Camera from "../camera/Camera"
 
 class HomePage extends Component {
   state = {
@@ -8,13 +10,20 @@ class HomePage extends Component {
     fileCharge: 0,
     stampCharge: 0,
     persentPayment: 0,
+    startCamera: false,
   };
 
+  handleCamera = () => {
+   this.setState({startCamera: !this.state.startCamera})
+  }
+
   emiCalculator = (user) => {
-    const { amount, noOfInstallment } = user;
-    if (amount <= 10000) {
-      const emiAmount = (amount - (amount / 100) * 38.25) / noOfInstallment;
-      const persentPayment = (amount / 100) * 38.25;
+    debugger;
+    const { invoiceAmount, noOfInstallment } = user;
+    if (invoiceAmount <= 10000) {
+      const emiAmount =
+        (invoiceAmount - (invoiceAmount / 100) * 38.25) / noOfInstallment;
+      const persentPayment = (invoiceAmount / 100) * 38.25;
       this.setState({
         fileCharge: parseInt(718),
         stampCharge: parseInt(205),
@@ -22,9 +31,10 @@ class HomePage extends Component {
         persentPayment: persentPayment,
       });
     }
-    if (amount >= 10001 && amount <= 15000) {
-      const emiAmount = (amount - (amount / 100) * 38.25) / noOfInstallment;
-      const persentPayment = (amount / 100) * 38.25;
+    if (invoiceAmount >= 10001 && invoiceAmount <= 15000) {
+      const emiAmount =
+        (invoiceAmount - (invoiceAmount / 100) * 38.25) / noOfInstallment;
+      const persentPayment = (invoiceAmount / 100) * 38.25;
       this.setState({
         fileCharge: parseInt(940),
         stampCharge: parseInt(262),
@@ -32,9 +42,10 @@ class HomePage extends Component {
         persentPayment: persentPayment,
       });
     }
-    if (amount >= 15001 && amount <= 20000) {
-      const emiAmount = (amount - (amount / 100) * 38.25) / noOfInstallment;
-      const persentPayment = (amount / 100) * 38.25;
+    if (invoiceAmount >= 15001 && invoiceAmount <= 20000) {
+      const emiAmount =
+        (invoiceAmount - (invoiceAmount / 100) * 38.25) / noOfInstallment;
+      const persentPayment = (invoiceAmount / 100) * 38.25;
       this.setState({
         fileCharge: parseInt(1194),
         stampCharge: parseInt(322),
@@ -48,14 +59,36 @@ class HomePage extends Component {
     return (
       <>
         <div className="row">
-          <div className="col-md-2"></div>
-          <div className="col-md-8">
+          <div className="col">
             <div className="row">
-              <div className="col-12"><UserRefForm emiCalculator={this.emiCalculator} /></div>
+              <div className="col-md-5">
+                <div className="row mt-5 mr-4">
+                  { this.state.startCamera && <Camera imageData={this.state.imageData}/>}
+                </div>
+                <div className="row text-center mt-5">
+                  <div className="col-4">
+                    <Link to="/dashboard">
+                      <div className="btn btn-primary">Dashboard</div>
+                    </Link>
+                  </div>
+                  <div className="col-4">
+                    <Link to="/dashboard">
+                      <div className="btn btn-success">Apply</div>
+                    </Link>
+                  </div>
+                  <div className="col-4">
+                    <div className="btn btn-success" onClick={() => this.handleCamera()}>Camera</div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-7">
+                <ApplicantRegForm emiCalculator={this.emiCalculator} />
+              </div>
             </div>
             {this.state.emiAmount > 0 && (
               <div className="row">
                 <div className="col-12 text-center">
+                  {console.log(this.state.emiAmount)}
                   <EMICalculatorModal
                     emiAmount={this.state.emiAmount}
                     fileCharge={this.state.fileCharge}
@@ -66,7 +99,6 @@ class HomePage extends Component {
               </div>
             )}
           </div>
-          <div className="col-md-2"></div>
         </div>
       </>
     );

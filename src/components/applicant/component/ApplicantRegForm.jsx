@@ -1,33 +1,41 @@
 import React, { Component } from "react";
 
-class UserRegForm extends Component {
+class ApplicantRegForm extends Component {
   state = {
-    name: "",
+    applicantName: "",
     aadharNo: "",
     panNo: "",
     phoneNo: "",
     city: "",
-    amount: "",
+    invoiceAmount: "",
     noOfInstallment: "",
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     const {
-      state: { name, amount, aadharNo, phoneNo, panNo, noOfInstallment, city },
-      props: { emiCalculator },
+      state: {
+        applicantName,
+        invoiceAmount,
+        aadharNo,
+        phoneNo,
+        panNo,
+        noOfInstallment,
+        city,
+      },
+      props: { emiCalculator, saveApplicant },
     } = this;
 
     const user = {
-      name: name,
+      applicantName: applicantName,
       aadharNo: aadharNo,
       panNo: panNo,
       phoneNo: phoneNo,
       city: city,
-      amount: amount,
+      invoiceAmount: invoiceAmount,
       noOfInstallment: noOfInstallment,
     };
-
+    saveApplicant(user);
     emiCalculator(user);
   };
 
@@ -40,7 +48,15 @@ class UserRegForm extends Component {
 
   render() {
     const {
-      state: { name, amount, aadharNo, phoneNo, panNo, noOfInstallment, city },
+      state: {
+        applicantName,
+        invoiceAmount,
+        aadharNo,
+        phoneNo,
+        panNo,
+        noOfInstallment,
+        city,
+      },
     } = this;
     return (
       <>
@@ -53,8 +69,8 @@ class UserRegForm extends Component {
                 type="text"
                 className="form-control"
                 id="applicantName"
-                value={name}
-                name="name"
+                value={applicantName}
+                name="applicantName"
                 placeholder="Applicant Name"
                 onChange={this.handleChange}
               />
@@ -116,8 +132,8 @@ class UserRegForm extends Component {
                 type="number"
                 className="form-control"
                 id="Amount"
-                value={amount}
-                name="amount"
+                value={invoiceAmount}
+                name="invoiceAmount"
                 placeholder="xxxx"
                 onChange={this.handleChange}
               />
@@ -147,4 +163,4 @@ class UserRegForm extends Component {
   }
 }
 
-export default UserRegForm;
+export default ApplicantRegForm;

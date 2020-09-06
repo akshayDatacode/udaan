@@ -1,28 +1,28 @@
 const HttpResponse = require("../../models/http-response");
 const ApplicantModel = require("../../models/applicantModel");
 
-const { validationResult } = require("express-validator");
-
 //========add Applicant ===============================================================
 
 const addApplicant = async (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return next(
-      new HttpResponse("Invalid inputs passed, please check your data.", 422),
-      console.log(errors)
-    );
-  }
-
   console.log(req.body);
-  const { title, price, quantity, discount } = req.body;
+  const {
+    applicantName,
+    agentId,
+    adhaarNo,
+    panNo,
+    phoneNo,
+    invoiceAmount,
+    noOfInstallment,
+  } = req.body;
 
   const createdApplicant = new ApplicantModel({
-    title,
-    price,
-    quantity,
-    discount,
-    userQuantity: 1,
+    applicantName,
+    agentId,
+    adhaarNo,
+    panNo,
+    phoneNo,
+    invoiceAmount,
+    noOfInstallment,
   });
 
   try {
@@ -34,16 +34,14 @@ const addApplicant = async (req, res, next) => {
     return res.status(500).json({ response: error });
   }
 
-  const { applicantName, agentId, adhaarNo, panNo, phoneNo, invoiceAmount, installmentNo } = createdApplicant
-   
-  res.status(201).json({
+  return res.status(201).json({
     applicantName,
     agentId,
     adhaarNo,
     panNo,
     phoneNo,
     invoiceAmount,
-    installmentNo,
+    noOfInstallment,
   });
 };
 
@@ -52,10 +50,10 @@ const addApplicant = async (req, res, next) => {
 const getApplicants = async (req, res) => {
   try {
     const applicant = await ApplicantModel.find({}).sort({ createdAt: -1 });
-    res.send({ applicant: applicant, success: true });
+    return res.send({ applicant: applicant, success: true });
   } catch (error) {
     console.error(error);
-    res.send({ success: false });
+    return res.send({ success: false });
   }
 };
 
@@ -66,10 +64,10 @@ const editApplicant = async (req, res) => {
   const data = req.body;
   try {
     const updatedApplicant = await ApplicantModel.findByIdAndUpdate(id, data);
-    res.send({ success: "ture", updatedApplicant: updatedApplicant });
+    return res.send({ success: "ture", updatedApplicant: updatedApplicant });
   } catch (error) {
     console.error(error);
-    res.send({ success: false });
+    return res.send({ success: false });
   }
 };
 

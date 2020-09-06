@@ -11,7 +11,8 @@ const applicantSchema = new Schema(
     panNo: { type: String },
     phoneNo: { type: Number },
     invoiceAmount: { type: Number },
-    installmentNO: { type: Number }
+    city: { type: String },
+    noOfInstallment: { type: Number },
   },
   {
     timestamps: [{ createdAt: "created_at" }],

@@ -1,10 +1,11 @@
 import React from "react";
-import HomePage from "../home_page";
+// import Home from "../home_page/Home";
+import AppRoutes from "./app_routes/AllRoutes";
 
 function App() {
   return (
     <div className="container">
-      <HomePage />
+      <AppRoutes />
     </div>
   );
 }
