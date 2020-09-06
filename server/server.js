@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const app = express();
 const applicantRoutes = require("./routes/applicantRoutes/applicantRoutes")
+const loanApplicationRoutes = require("./routes/loanApplicationRoutes/loanApplicationRoutes")
 
 //usages
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use(cors());
 
 //using routes
 app.use("/api", applicantRoutes)
+app.use("/api/loan",loanApplicationRoutes)
 
 // // TOKEN AUTHENTICATION- ALL THE ROUTES WRITTEN BELOW THIS WILL NEED TOKEN TO BE SENT in request headers
 // app.use((req, res, next) => {
