@@ -1,12 +1,17 @@
 import React, { Component } from "react";
-import ApplicantsList from "../ApplicantsList";
+import { Link } from "react-router-dom";
 class Dashboard extends Component {
   state = {};
   render() {
     return (
       <>
         <h1>Dashboard</h1>
-        <ApplicantsList />
+        <Link to="/applicants_list">
+          <div className="btn btn-success">Applicants List</div>
+        </Link>
+        <Link to="/loan_applicants_list">
+          <div className="btn btn-warning">Loan Application List</div>
+        </Link>
       </>
     );
   }

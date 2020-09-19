@@ -6,23 +6,22 @@ import { getColumns } from "./helpers";
 
 let columns = getColumns();
 
-class ApplicantsList extends React.Component {
+class LoanApplicantsList extends React.Component {
   state = {
-    applicantsData: [],
+    loanApplicantsData: [],
   };
   
   componentDidMount() {
-    this.props.getapplicants().then((res) => {
+    this.props.getLoanApplicants().then((res) => {
       if (res && res.success) {
-        console.log(res.data);
-        this.setState({ applicantsData: res.data.applicant });
+        this.setState({ loanApplicantsData: res.data.loanApplications });
       }
     });
   }
 
   render() {
     const {
-      state: { applicantsData },
+      state: { loanApplicantsData },
     } = this;
 
     return (
@@ -32,8 +31,8 @@ class ApplicantsList extends React.Component {
         </Helmet>
         <div className="row">
           <div className="col">
-            <h2>Applicants List</h2>
-            <Table tableData={applicantsData} columns={columns}/>
+            <h2 className="mt-5 mb-4">Loan Applications List</h2>
+            <Table tableData={loanApplicantsData} columns={columns}/>
           </div>
         </div>
       </>
@@ -41,12 +40,12 @@ class ApplicantsList extends React.Component {
   }
 }
 
-ApplicantsList.defaultProps = {
-  applicants: {},
+LoanApplicantsList.defaultProps = {
+  loanApplicants: {},
 };
 
-ApplicantsList.propTypes = {
-  applicants: PropTypes.object,
+LoanApplicantsList.propTypes = {
+  loanApplicants: PropTypes.object,
 };
 
-export default ApplicantsList;
+export default LoanApplicantsList;

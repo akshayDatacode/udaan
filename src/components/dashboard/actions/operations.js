@@ -16,3 +16,17 @@ export const getapplicants = () => (dispatch) => {
       dispatch(actions.setApplicantsError(error));
     });
 };
+
+export const getLoanApplicants = () => (dispatch) => {
+  return axios
+    .get(`${api}loan/get_loan_applications`)
+    .then(({ data }) => {
+      dispatch(actions.setLoanApplicantsData(data));
+      console.log(data)
+      return { success: true, data };
+    })
+    .catch((error) => {
+      console.log("get Loan applicants error", error);
+      dispatch(actions.setApplicantsError(error));
+    });
+};

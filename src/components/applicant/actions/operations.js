@@ -17,3 +17,18 @@ export const saveApplicant = (user) => dispatch => (
 			console.log('saveApplicant error', error)
 		})
 )
+
+export const addLoanApplicants = (user) => dispatch => (
+	axios.post(`${api}loan/add_loan_application`, user)
+		.then((data) => {
+			console.log('applyForLoan status', user)
+			if (data.status === 200) {
+				console.log('applyForLoan status', data.status)
+				triggerNotifier({ type: 'success', message: 'Calculated successfully !'})
+			}
+		})
+		.catch((error) => {
+			console.log(user)
+			console.log('applyForLoan error', error)
+		})
+)

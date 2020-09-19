@@ -3,6 +3,7 @@ import { getApplicantsHandlers } from "./getApplicants";
 
 const initialState = {
   applicants: {},
+  loanApplicants: {}
 };
 
 const handlers = {
