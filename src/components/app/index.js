@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AppRoutes from "./app_routes/AllRoutes";
-import Login from "../user/component/Login";
+import AuthRoutes from "./app_routes/AuthRoutes" 
 import { connect } from "react-redux";
 import { setLoginUser } from "../user/actions";
 
@@ -24,7 +24,7 @@ class App extends Component {
 
     return (
       <div className="container">
-        {currentUser === null ? <Login /> : <AppRoutes />}
+        {currentUser === null ? <AuthRoutes /> : <AppRoutes />}
       </div>
     )
   }
