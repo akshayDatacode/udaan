@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { loginUser } from "../actions"
+import { validMail } from './helper'
 
 class Login extends Component {
 
   state = {
     email: '',
     password: '',
-  };
+    error: [],
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -15,6 +17,7 @@ class Login extends Component {
       state: {
         password,
         email,
+        error
       },
       props: { loginUser },
 
@@ -23,13 +26,22 @@ class Login extends Component {
     const user = {
       email,
       password,
-    };
+    }
 
-    loginUser(user).then((res) => {
-      if (res && res.success) {
-        this.setState({ email: "", password: "" })
-      }
-    })
+    if (!validMail(email)) {
+      error.push("Invalid Email")
+      this.setState({ error })
+      setTimeout(function () {
+        this.setState({ error: [] })
+      }.bind(this), 2500)
+
+    } else {
+      loginUser(user).then((res) => {
+        if (res && res.success) {
+          this.setState({ email: "", password: "" })
+        }
+      })
+    }
   };
 
   handleChange = (event) => {
@@ -44,6 +56,7 @@ class Login extends Component {
       state: {
         email,
         password,
+        error
       },
     } = this;
 
@@ -69,6 +82,7 @@ class Login extends Component {
                         placeholder="akshaycse25@gmail.com"
                         onChange={this.handleChange}
                       />
+                      {error.includes("Invalid Email") && <span className="text-danger">Invalid Email Format</span>}
                     </div>
                   </div>
                   <div className="form-row">
