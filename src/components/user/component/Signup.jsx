@@ -102,7 +102,7 @@ class Signup extends Component {
                   <div className="form-group row ">
                     <div className="col text-center">
                       <div onClick={this.handleSubmit}>
-                        <div className="btn btn-primary">Login</div>
+                        <div className="btn btn-primary">Signup</div>
                       </div>
                     </div>
                   </div>
