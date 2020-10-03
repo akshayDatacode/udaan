@@ -46,7 +46,7 @@ class Signup extends Component {
         this.setState({ error: [] })
       }.bind(this), 2500)
     }
-    if(!userName.length){
+    if (!userName.length) {
       error[error.length] = "Username"
       this.setState({ error })
       setTimeout(function () {
@@ -54,8 +54,16 @@ class Signup extends Component {
       }.bind(this), 2500)
     }
 
-    if (error.length == 0)
+    if (error.length == 0) {
       signupUser(user)
+      this.setState({
+        email: '',
+        password: '',
+        userName: '',
+        error: [],
+      })
+    }
+
 
 
   };
@@ -80,9 +88,9 @@ class Signup extends Component {
     return (
       <>
         <div className="row">
-          <div className="col-3">
+          <div className="col-md-3">
           </div>
-          <div className="col-6">
+          <div className="col-md-6">
             <div className="card mt-5">
               <h1 className="text-center">Sign Up</h1>
               <center>
@@ -143,7 +151,7 @@ class Signup extends Component {
               </center>
             </div>
           </div>
-          <div className="col-3">
+          <div className="col-md-3">
           </div>
         </div>
       </>

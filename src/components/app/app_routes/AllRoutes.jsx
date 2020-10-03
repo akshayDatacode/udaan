@@ -6,9 +6,7 @@ import Dashboard from "../../dashboard/components/Dashboard";
 import LoanApplyForm from "../../applicant/component/LoanApplyForm";
 import ApplicantsList from "../../dashboard/components/ApplicantsList";
 import LoanApplicantsList from "../../dashboard/components/LoanApplicantsList";
-import Login from "../../user/component/Login";
-import Signup from "../../user/component/Signup";
-
+// s
 const AppRoutes = () => {
   return (
     <>
