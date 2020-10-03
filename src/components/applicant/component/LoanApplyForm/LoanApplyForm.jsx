@@ -1,27 +1,80 @@
 import React, { Component } from "react";
+import Camera from "../../../camera/Camera"
 
 class LoanApplyForm extends Component {
   state = {
-    applicantName: "",
     aadharNo: "",
-    panNo: "",
-    phoneNo: "",
-    city: "",
-    invoiceAmount: "",
-    noOfInstallment: "",
+    applicantName: '',
+    agentId: '',
+    poaType: '',
+    poaNo: '',
+    poaImg: '',
+    phoneNo: '',
+    userProfileImg: "",
+    // Address
+    houseNo: '',
+    street: '',
+    landmark: '',
+    pinCode: '',
+    city: '',
+    state: '',
+    // Finance Product Details
+    loanAmount: '',
+    invoiceNo: '',
+    modelNo: '',
+    noOfInstallment: '',
+    // Cheque Details
+    chequeNo1: '',
+    chequeNo1Img: '',
+    chequeNo2: '',
+    chequeNo2Img: '',
+    bankName: '',
+    accountNo: '',
+    IFCSCode: '',
+    // Gaurantor Details
+    gaurantorName: '',
+    gaurantorPhoneNo: '',
+    gaurantorAddress: '',
+    // Camera
+    startCamera: false,
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     const {
       state: {
-        applicantName,
-        invoiceAmount,
         aadharNo,
+        applicantName,
+        agentId,
+        poaType,
+        poaNo,
+        poaImg,
         phoneNo,
-        panNo,
-        noOfInstallment,
+        userProfileImg,
+        // Address
+        houseNo,
+        street,
+        landmark,
+        pinCode,
         city,
+        state,
+        // Finance Product Details
+        loanAmount,
+        invoiceNo,
+        modelNo,
+        noOfInstallment,
+        // Cheque Details
+        chequeNo1,
+        chequeNo1Img,
+        chequeNo2,
+        chequeNo2Img,
+        bankName,
+        accountNo,
+        IFCSCode,
+        // Gaurantor Details
+        gaurantorName,
+        gaurantorPhoneNo,
+        gaurantorAddress,
       },
       props: { addLoanApplicants },
     } = this;
@@ -29,10 +82,9 @@ class LoanApplyForm extends Component {
     const user = {
       applicantName: applicantName,
       aadharNo: aadharNo,
-      panNo: panNo,
       phoneNo: phoneNo,
       city: city,
-      invoiceAmount: invoiceAmount,
+      userProfileImg: userProfileImg,
       noOfInstallment: noOfInstallment,
     };
     addLoanApplicants(user);
@@ -45,16 +97,50 @@ class LoanApplyForm extends Component {
     });
   };
 
+  handleCamera = () => {
+    this.setState({ startCamera: !this.state.startCamera })
+  }
+
+  handleImgData = (imgData) => {
+    this.setState({ userProfileImg: imgData })
+    console.log(imgData)
+  }
+
   render() {
     const {
       state: {
-        applicantName,
-        invoiceAmount,
         aadharNo,
+        applicantName,
+        agentId,
+        poaType,
+        poaNo,
+        poaImg,
         phoneNo,
-        panNo,
-        noOfInstallment,
+        userProfileIm,
+        // Address
+        houseNo,
+        street,
+        landmark,
+        pinCode,
         city,
+        state,
+        // Finance Product Details
+        loanAmount,
+        invoiceNo,
+        modelNo,
+        noOfInstallment,
+        // Cheque Details
+        chequeNo1,
+        chequeNo1Im,
+        chequeNo2,
+        chequeNo2Img,
+        bankName,
+        accountNo,
+        IFCSCode,
+        // Gaurantor Details
+        gaurantorName,
+        gaurantorPhoneNo,
+        gaurantorAddress,
       },
     } = this;
     return (
@@ -75,6 +161,12 @@ class LoanApplyForm extends Component {
               />
             </div>
             <div className="form-group col-md-6">
+              {this.state.startCamera && <Camera handleImgData={this.handleImgData} />}
+              <div className="btn btn-success" onClick={() => this.handleCamera()}>Take Photo</div>
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-group col-md-4">
               <label>Aadhar No.</label>
               <input
                 type="text"
@@ -86,21 +178,19 @@ class LoanApplyForm extends Component {
                 onChange={this.handleChange}
               />
             </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <label>PAN No.</label>
+            <div className="form-group col-md-4">
+              <label>Proof of Address No.</label>
               <input
                 type="text"
                 className="form-control"
                 id="applicantPAN"
-                value={panNo}
-                name="panNo"
+                value={poaNo}
+                name="poaNo"
                 placeholder="ABCDE1234F"
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form-group col-md-6">
+            <div className="form-group col-md-4">
               <label>Phone No.</label>
               <input
                 type="number"
@@ -131,8 +221,8 @@ class LoanApplyForm extends Component {
                 type="number"
                 className="form-control"
                 id="Amount"
-                value={invoiceAmount}
-                name="invoiceAmount"
+                value={loanAmount}
+                name="loanAmount"
                 placeholder="xxxx"
                 onChange={this.handleChange}
               />

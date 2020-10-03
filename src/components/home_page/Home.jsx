@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux"
+import { logoutUser } from "../user/actions"
 
 class Home extends Component {
   state = {};
@@ -20,6 +22,7 @@ class Home extends Component {
             <Link to="/home_page">
               <button className="btn btn-primary btn-lg">Calculate EMI</button>
             </Link>
+            <div className="btn btn-warning" onClick={() => this.props.logoutUser()}>LogOut</div>
           </div>
           <div className="col-2"></div>
         </div>
@@ -28,4 +31,11 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapDispatchToProps = {
+  logoutUser,
+}
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Home)
