@@ -1,13 +1,19 @@
-import LoanApplyForm from './LoanApplyForm'
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { addLoanApplicants } from "../../actions";
+// import React, { Component } from "react";
+// import LoanApplyForm1 from './LoanApplyForm1'
+// import { withRouter } from "react-router-dom";
+// import { connect } from "react-redux";
+// import { addLoanApplicants } from "../../actions";
+// import { savePersonalData } from "../../actions"
 
-const mapDispatchToProps = {
-	addLoanApplicants,
-}
+// const mapStateToProps = ({ applicant }) => ({
+// 	personalData: applicant.personalData,
+// 	address: applicant.address,
+// 	financeProductDetails: applicant.financeProductDetails,
+// 	chequeDetails: applicant.chequeDetails,
+// 	guarantorDetails: applicant.guarantorDetails
+// });
 
-export default withRouter(connect(
-	null,
-	mapDispatchToProps
-)(LoanApplyForm))
+// const mapDispatchToProps = {
+// 	addLoanApplicants,
+// 	savePersonalData
+// }
