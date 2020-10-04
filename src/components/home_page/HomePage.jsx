@@ -18,8 +18,12 @@ class HomePage extends Component {
   }
 
   emiCalculator = (user) => {
-    debugger;
+    
     const { invoiceAmount, noOfInstallment } = user;
+    const { currentUser: { userId } } = this.props
+    
+    console.log("Pankaj", userId)
+    
     if (invoiceAmount <= 10000) {
       const emiAmount =
         (invoiceAmount - (invoiceAmount / 100) * 38.25) / noOfInstallment;

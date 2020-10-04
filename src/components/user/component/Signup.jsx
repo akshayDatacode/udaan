@@ -9,6 +9,7 @@ class Signup extends Component {
     email: '',
     password: '',
     userName: '',
+    userId: '',
     error: [],
   };
 
@@ -19,6 +20,7 @@ class Signup extends Component {
         password,
         email,
         userName,
+        userId,
         error
       },
       props: { signupUser },
@@ -29,6 +31,7 @@ class Signup extends Component {
       email,
       password,
       userName,
+      userId,
     };
 
     if (!validMail(email)) {
@@ -61,11 +64,9 @@ class Signup extends Component {
         password: '',
         userName: '',
         error: [],
+        userId: '',
       })
     }
-
-
-
   };
 
   handleChange = (event) => {
@@ -81,8 +82,11 @@ class Signup extends Component {
         email,
         password,
         userName,
+        userId,
         error,
       },
+
+      props: { userError }
     } = this;
 
     return (
@@ -95,6 +99,21 @@ class Signup extends Component {
               <h1 className="text-center">Sign Up</h1>
               <center>
                 <form className="justify-content-center w-50">
+                  <div className="form-row justify-content-center">
+                    <div className="form-group text-center">
+                      <label>UserId</label>
+                      <input
+                        type="userId"
+                        className="form-control"
+                        id="userId"
+                        value={userId}
+                        name="userId"
+                        placeholder="PF1001"
+                        onChange={this.handleChange}
+                      />
+                      {userError && <span className="text-danger small">{userError}</span>}
+                    </div>
+                  </div>
                   <div className="form-row justify-content-center">
                     <div className="form-group text-center">
                       <label>Email</label>
@@ -163,7 +182,11 @@ const mapDispatchToProps = {
   signupUser,
 }
 
+const mapStateToProps = ({ user }) => ({
+  userError: user.error,
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Signup)
