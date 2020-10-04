@@ -3,6 +3,7 @@ import AppRoutes from "./app_routes/AllRoutes";
 import AuthRoutes from "./app_routes/AuthRoutes" 
 import { connect } from "react-redux";
 import { setLoginUser } from "../user/actions";
+import IndexHeaderComponent from "../header_components/IndexHeaderComponent";
 
 class App extends Component {
   state = {
@@ -24,6 +25,7 @@ class App extends Component {
 
     return (
       <div className="container">
+        {currentUser !== null && <IndexHeaderComponent /> }
         {currentUser === null ? <AuthRoutes /> : <AppRoutes />}
       </div>
     )

@@ -8,7 +8,7 @@ class Home extends Component {
   render() {
     return (
       <>
-        <div className="row">
+        <div className="row mt-5">
           <div className="col text-center mt-5">
             <h1>Udaan Co-Operative Society</h1>
           </div>
