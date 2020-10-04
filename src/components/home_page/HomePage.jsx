@@ -76,7 +76,7 @@ class HomePage extends Component {
                     </Link>
                   </div>
                   <div className="col-4">
-                    <Link to="/apply_for_loan">
+                    <Link to="/personal_details">
                       <div className="btn btn-success">Apply</div>
                     </Link>
                   </div>
