@@ -6,7 +6,7 @@ import { validMail } from './helper'
 class Login extends Component {
 
   state = {
-    email: '',
+    userId: '',
     password: '',
     error: [],
   }
@@ -16,7 +16,7 @@ class Login extends Component {
     const {
       state: {
         password,
-        email,
+        userId,
         error
       },
       props: { loginUser },
@@ -24,24 +24,16 @@ class Login extends Component {
     } = this;
 
     const user = {
-      email,
+      userId,
       password,
     }
 
-    if (!validMail(email)) {
-      error.push("Invalid Email")
-      this.setState({ error })
-      setTimeout(function () {
-        this.setState({ error: [] })
-      }.bind(this), 2500)
+    loginUser(user).then((res) => {
+      if (res && res.success) {
+        this.setState({ userId: "", password: "" })
+      }
+    })
 
-    } else {
-      loginUser(user).then((res) => {
-        if (res && res.success) {
-          this.setState({ email: "", password: "" })
-        }
-      })
-    }
   };
 
   handleChange = (event) => {
@@ -54,7 +46,7 @@ class Login extends Component {
   render() {
     const {
       state: {
-        email,
+        userId,
         password,
         error
       },
@@ -72,17 +64,17 @@ class Login extends Component {
                 <form>
                   <div className="form-row">
                     <div className="form-group col-md-6 text-center">
-                      <label>Email</label>
+                      <label>userId</label>
                       <input
-                        type="email"
+                        type="text"
                         className="form-control"
-                        id="email"
-                        value={email}
-                        name="email"
-                        placeholder="akshaycse25@gmail.com"
+                        id="userId"
+                        value={userId}
+                        name="userId"
+                        placeholder=""
                         onChange={this.handleChange}
                       />
-                      {error.includes("Invalid Email") && <span className="text-danger">Invalid Email Format</span>}
+                      {error.includes("Invalid userId") && <span className="text-danger">Invalid userId Format</span>}
                     </div>
                   </div>
                   <div className="form-row">

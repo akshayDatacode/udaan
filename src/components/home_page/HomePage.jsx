@@ -11,55 +11,70 @@ class HomePage extends Component {
     stampCharge: 0,
     persentPayment: 0,
     startCamera: false,
+    membershipCharge: 0,
   };
 
   handleCamera = () => {
-   this.setState({startCamera: !this.state.startCamera})
+    this.setState({ startCamera: !this.state.startCamera })
   }
 
   emiCalculator = (user) => {
-    
+
     const { invoiceAmount, noOfInstallment } = user;
     const { currentUser: { userId } } = this.props
-    
-    console.log("Pankaj", userId)
-    
-    if (invoiceAmount <= 10000) {
+
+
+    if (userId === "PF001") {
+      console.log("Pankaj", userId)
       const emiAmount =
-        (invoiceAmount - (invoiceAmount / 100) * 38.25) / noOfInstallment;
-      const persentPayment = (invoiceAmount / 100) * 38.25;
+        (invoiceAmount - (invoiceAmount / 100) * 34) / noOfInstallment;
+      const persentPayment = (invoiceAmount / 100) * 34;
       this.setState({
-        fileCharge: parseInt(718),
-        stampCharge: parseInt(205),
+        fileCharge: parseInt(787),
+        membershipCharge: parseInt(399),
         emiAmount: emiAmount,
         persentPayment: persentPayment,
-      });
+      })
+    } else {
+      if (invoiceAmount <= 10000) {
+        const emiAmount =
+          (invoiceAmount - (invoiceAmount / 100) * 38.25) / noOfInstallment;
+        const persentPayment = (invoiceAmount / 100) * 38.25;
+        this.setState({
+          fileCharge: parseInt(718),
+          stampCharge: parseInt(205),
+          emiAmount: emiAmount,
+          persentPayment: persentPayment,
+        });
+      }
+      if (invoiceAmount >= 10001 && invoiceAmount <= 15000) {
+        const emiAmount =
+          (invoiceAmount - (invoiceAmount / 100) * 38.25) / noOfInstallment;
+        const persentPayment = (invoiceAmount / 100) * 38.25;
+        this.setState({
+          fileCharge: parseInt(940),
+          stampCharge: parseInt(262),
+          emiAmount: emiAmount,
+          persentPayment: persentPayment,
+        });
+      }
+      if (invoiceAmount >= 15001 && invoiceAmount <= 20000) {
+        const emiAmount =
+          (invoiceAmount - (invoiceAmount / 100) * 38.25) / noOfInstallment;
+        const persentPayment = (invoiceAmount / 100) * 38.25;
+        this.setState({
+          fileCharge: parseInt(1194),
+          stampCharge: parseInt(322),
+          emiAmount: emiAmount,
+          persentPayment: persentPayment,
+        });
+      }
     }
-    if (invoiceAmount >= 10001 && invoiceAmount <= 15000) {
-      const emiAmount =
-        (invoiceAmount - (invoiceAmount / 100) * 38.25) / noOfInstallment;
-      const persentPayment = (invoiceAmount / 100) * 38.25;
-      this.setState({
-        fileCharge: parseInt(940),
-        stampCharge: parseInt(262),
-        emiAmount: emiAmount,
-        persentPayment: persentPayment,
-      });
-    }
-    if (invoiceAmount >= 15001 && invoiceAmount <= 20000) {
-      const emiAmount =
-        (invoiceAmount - (invoiceAmount / 100) * 38.25) / noOfInstallment;
-      const persentPayment = (invoiceAmount / 100) * 38.25;
-      this.setState({
-        fileCharge: parseInt(1194),
-        stampCharge: parseInt(322),
-        emiAmount: emiAmount,
-        persentPayment: persentPayment,
-      });
-    }
+
   };
 
   render() {
+    const { currentUser: { userId } } = this.props
     return (
       <>
         <div className="row">
@@ -67,7 +82,7 @@ class HomePage extends Component {
             <div className="row">
               <div className="col-md-5">
                 <div className="row mt-5 mr-4">
-                  { this.state.startCamera && <Camera imageData={this.state.imageData}/>}
+                  {this.state.startCamera && <Camera imageData={this.state.imageData} />}
                 </div>
                 <div className="row text-center mt-5">
                   <div className="col-4">
@@ -92,12 +107,13 @@ class HomePage extends Component {
             {this.state.emiAmount > 0 && (
               <div className="row">
                 <div className="col-12 text-center">
-                  {console.log(this.state.emiAmount)}
                   <EMICalculatorModal
+                    userId={userId}
                     emiAmount={this.state.emiAmount}
                     fileCharge={this.state.fileCharge}
                     stampCharge={this.state.stampCharge}
                     persentPayment={this.state.persentPayment}
+                    membershipCharge={this.state.membershipCharge}
                   />
                 </div>
               </div>

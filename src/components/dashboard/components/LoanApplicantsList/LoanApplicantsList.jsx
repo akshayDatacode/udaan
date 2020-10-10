@@ -16,7 +16,7 @@ class LoanApplicantsList extends React.Component {
       if (res && res.success) {
         this.setState({ loanApplicantsData: res.data.loanApplications });
       }
-    });
+    })
   }
 
   render() {
