@@ -10,6 +10,7 @@ class Signup extends Component {
     password: '',
     userName: '',
     userId: '',
+    userType: '',
     error: [],
   };
 
@@ -21,6 +22,7 @@ class Signup extends Component {
         email,
         userName,
         userId,
+        userType,
         error
       },
       props: { signupUser },
@@ -32,6 +34,7 @@ class Signup extends Component {
       password,
       userName,
       userId,
+      userType
     };
 
     if (!validMail(email)) {
@@ -158,6 +161,18 @@ class Signup extends Component {
                       />
                       {error.includes("Username") && <span className="text-danger small">Please Enter Username</span>}
                     </div>
+                  </div>
+                  <div class="form-check" onClick={() => this.setState({ userType: "admin"})}>
+                    <input class="form-check-input" type="radio" name="userType" id="admin" value="admin" />
+                    <label class="form-check-label">
+                      Admin
+                    </label>
+                  </div>
+                  <div class="form-check" onClick={() => this.setState({ userType: "agent"})}>
+                    <input class="form-check-input" type="radio" name="userType" id="agent" value="agent" />
+                    <label class="form-check-label">
+                      Agent
+                    </label>
                   </div>
                   <div className="form-group row ">
                     <div className="col text-center">
