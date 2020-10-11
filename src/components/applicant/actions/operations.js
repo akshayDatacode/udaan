@@ -18,7 +18,7 @@ export const saveApplicant = (user) => dispatch => (
 		})
 )
 
-export const addLoanApplicants = (user) => dispatch => (
+export const addLoanApplicants = (user) => (
 	axios.post(`${api}loan/add_loan_application`, user)
 		.then((data) => {
 			console.log('applyForLoan status', user)

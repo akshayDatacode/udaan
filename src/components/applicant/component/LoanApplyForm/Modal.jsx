@@ -41,7 +41,7 @@ class Modals extends Component {
 
 
         const user = {
-            aadharNo,
+            aadhaarNo: aadharNo,
             applicantName,
             agentId,
             poaType,
@@ -71,34 +71,34 @@ class Modals extends Component {
             gaurantorAddress,
         }
         await addLoanApplicants(user)
-this.setState({submit: true})
+        this.setState({ submit: true })
     }
     render() {
         return (
 
             this.state.submit ?
-            <Redirect to="/" />
-            :
-            <Modal
-                show={this.props.open}
-                size="sm"
-                onHide={this.props.handleClose}
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>Submit Form</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <h4 className="text-center">are u sure want to submit</h4>
-                </Modal.Body>
-                <Modal.Footer>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick={this.props.handleClose}>Close</button>
-                
+                <Redirect to="/" />
+                :
+                <Modal
+                    show={this.props.open}
+                    size="sm"
+                    onHide={this.props.handleClose}
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Submit Form</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <h4 className="text-center">are u sure want to submit</h4>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick={this.props.handleClose}>Close</button>
+
                         <button type="button" class="btn btn-primary" onClick={this.handleSubmit}>Submit Details</button>
-                
-                </Modal.Footer>
-            </Modal>
+
+                    </Modal.Footer>
+                </Modal>
 
 
         )

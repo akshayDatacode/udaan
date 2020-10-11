@@ -14,18 +14,13 @@ export const getColumns = () => [
     headerClasses: "table-header priority",
   },
   {
-    dataField: "panNo",
-    text: "PAN No",
-    headerClasses: "table-header priority",
-  },
-  {
-    dataField: "adhaarNo",
+    dataField: "aadhaarNo",
     text: "Aadhar No",
     headerClasses: "table-header priority",
   },
   {
-    dataField: "invoiceAmount",
-    text: "Invoice Amount",
+    dataField: "loanAmount",
+    text: "Loan Amount",
     headerClasses: "table-header priority",
   },
   {
