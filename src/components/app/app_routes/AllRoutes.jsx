@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import HomePage from "../../home_page";
 import Home from "../../home_page/Home";
 import Dashboard from "../../dashboard/components/Dashboard";
@@ -10,12 +11,14 @@ import ApplyLoanForm2 from "../../applicant/component/LoanApplyForm/LoanApplyFor
 import ApplyLoanForm3 from "../../applicant/component/LoanApplyForm/LoanApplyForm3"
 import ApplyLoanForm4 from "../../applicant/component/LoanApplyForm/LoanApplyForm4"
 import ApplyLoanForm5 from "../../applicant/component/LoanApplyForm/LoanApplyForm5"
+import DashboardAgent from '../../agent/agentDashboard/components/Dashboard'
 
-const AppRoutes = () => {
+const AppRoutes = (props) => {
   return (
+    
     <>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={props.currentUser.userType !== "agent" ? Home : DashboardAgent} />
         <Route exact path="/home_page" component={HomePage} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/applicants_list" component={ApplicantsList} />
@@ -29,5 +32,8 @@ const AppRoutes = () => {
     </>
   );
 };
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,  
+});
 
-export default AppRoutes;
+export default connect(mapStateToProps, null)(AppRoutes);
