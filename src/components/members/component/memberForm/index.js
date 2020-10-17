@@ -1,3 +1,3 @@
-import MemberForm from "./MemberForm"
+import MemberForm1 from "./MemberForm1"
 
-export default MemberForm
+export default MemberForm1
