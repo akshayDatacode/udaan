@@ -15,7 +15,7 @@ const saveAddressData = (state, action) => {
     }
 }
 
-export const getMemberDataHandler = {
+export const setMemberDataHandler = {
     [constants.SAVE_PERSONAL_DATA]: savePersonalData,
     [constants.SAVE_ADDRESS_DATA]: saveAddressData,
 };

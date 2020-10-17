@@ -1,13 +1,16 @@
-import { getMemberDataHandler } from "./getMemberData";
+import { setMemberDataHandler } from "./setMemberData";
 import { createReducer } from "../../../core/reduxUtils";
+import { fetchMembersHandler } from "./fetchMembersData"
 
 const initialState = {
   personalData: {},
   address: {},
+  members: {},
 };
 
 const handlers = {
-  ...getMemberDataHandler,
+  ...fetchMembersHandler,
+  ...setMemberDataHandler,
 };
 
 const memberReducer = createReducer(initialState, handlers);

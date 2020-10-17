@@ -8,9 +8,9 @@ export const validateForm1 = (data) => {
     if (!data.agentId) {
         error.agentId = "AgentId required"
     }
-    if (!data.applicantName) {
-        error.applicantName = "Name required"
-    }
+    // if (!data.applicantName) {
+    //     error.applicantName = "Name required"
+    // }
     if (!data.poaType) {
         error.poaType = "poaType required"
     }

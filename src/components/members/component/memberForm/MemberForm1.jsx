@@ -7,7 +7,7 @@ import { validateForm1 } from '../../../applicant/component/LoanApplyForm/helper
 class MemberForm1 extends Component {
   state = {
     aadharNo: this.props.personalData.aadharNo,
-    applicantName: this.props.personalData.applicantName,
+    memberName: this.props.personalData.memberName,
     agentId: this.props.currentUser.userId,
     poaType: this.props.personalData.poaType,
     poaNo: this.props.personalData.poaNo,
@@ -30,7 +30,7 @@ class MemberForm1 extends Component {
       props: { savePersonalData },
       state: {
         aadharNo,
-        applicantName,
+        memberName,
         agentId,
         poaType,
         poaNo,
@@ -41,7 +41,7 @@ class MemberForm1 extends Component {
     } = this
     const data = {
       aadharNo: aadharNo,
-      applicantName: applicantName,
+      memberName: memberName,
       agentId: agentId,
       poaType: poaType,
       poaNo: poaNo,
@@ -60,7 +60,7 @@ class MemberForm1 extends Component {
   render() {
     const {
       aadharNo,
-      applicantName,
+      memberName,
       agentId,
       poaType,
       poaNo,
@@ -85,8 +85,8 @@ class MemberForm1 extends Component {
           </div>
           <div className="form-group col-md-6">
             <label>Applicant Name</label>
-            <input type="text" className="form-control" name="applicantName" value={applicantName} onChange={this.handleChange} placeholder="Applicant Name" />
-            {error.applicantName && <span className="text-danger">{error.applicantName}</span>}
+            <input type="text" className="form-control" name="memberName" value={memberName} onChange={this.handleChange} placeholder="Applicant Name" />
+            {error.memberName && <span className="text-danger">{error.memberName}</span>}
           </div>
           <div className="form-group col-md-6">
             <label>Agent Id</label>

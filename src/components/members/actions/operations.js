@@ -1,5 +1,5 @@
 import axios from "axios"
-
+import * as actions from "./actionCreators";
 const api = `http://www.localhost:5000/api/member/`
 
 export const addMember = (member) => (
@@ -15,3 +15,18 @@ export const addMember = (member) => (
 			console.log('Add Member error', error)
 		})
 )
+
+
+export const fetchMembers = () => (dispatch) => {
+  return axios
+    .get(`${api}fetch_members`)
+    .then(({ data }) => {
+      dispatch(actions.setMembersData(data));
+      console.log(data)
+      return { success: true, data: data };
+    })
+    .catch((error) => {
+      console.log("Fetch members error", error);
+      dispatch(actions.setMembersError(error));
+    });
+};

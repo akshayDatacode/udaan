@@ -11,7 +11,7 @@ class Modals extends Component {
     }
     handleSubmit = async () => {
         const { aadharNo,
-            applicantName,
+            memberName,
             agentId,
             poaType,
             poaNo,
@@ -27,7 +27,7 @@ class Modals extends Component {
 
         const user = {
             aadhaarNo: aadharNo,
-            applicantName,
+            memberName,
             agentId,
             poaType,
             poaNo,
