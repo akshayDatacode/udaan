@@ -1,13 +1,3 @@
-import HomePage from "./HomePage"
+import Home from "./Home"
 
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
-});
-
-
-export default withRouter(
-  connect(mapStateToProps, null)(HomePage)
-);
+export default Home

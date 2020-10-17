@@ -19,7 +19,7 @@ class Home extends Component {
             <Link to="/dashboard">
               <button className="btn btn-primary btn-lg mr-4">Dashboard</button>
             </Link>
-            <Link to="/home_page">
+            <Link to="/calculate_emi">
               <button className="btn btn-primary btn-lg">Calculate EMI</button>
             </Link>
             <div className="btn btn-warning" onClick={() => this.props.logoutUser()}>LogOut</div>

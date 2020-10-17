@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import ApplicantRegForm from "../applicant/component";
-import EMICalculatorModal from "../emi_calculator";
+import EMICalculatorModal from "./EMICalculatorModal";
 import { Link } from "react-router-dom";
 import Camera from "../camera/Camera"
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
-class HomePage extends Component {
+
+class EMICalculator extends Component {
   state = {
     emiAmount: 0,
     fileCharge: 0,
@@ -86,11 +89,6 @@ class HomePage extends Component {
                 </div>
                 <div className="row text-center mt-5">
                   <div className="col-4">
-                    <Link to="/dashboard">
-                      <div className="btn btn-primary">Dashboard</div>
-                    </Link>
-                  </div>
-                  <div className="col-4">
                     <Link to="/personal_details">
                       <div className="btn btn-success">Apply</div>
                     </Link>
@@ -125,4 +123,10 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
+export default withRouter(
+  connect(mapStateToProps, null)(EMICalculator)
+)

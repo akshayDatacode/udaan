@@ -3,6 +3,7 @@ import "../../assets/css/ToolBar.css";
 import DrawerToggleButton from "./side_drawer/DrawerToggleButton";
 import { connect } from "react-redux"
 import { logoutUser } from "../user/actions"
+import { Link } from "react-router-dom";
 
 class ToolBar extends Component {
   state = {};
@@ -26,27 +27,30 @@ class ToolBar extends Component {
             <div className="logo-nev-spacer" />
             <div className="toolbar_navigation-items">
               <ul>
-                <li>
-                  <a href="#Home">
-           
-                    Home
-                  </a>
+              <li>
+                  <Link to="/dashboard">
+                    Dashboard
+                  </Link>
                 </li>
                 <li>
-                  <a href="#About-us">
-                                        About Us
-                  </a>
+                  <Link to="/calculate_emi">
+                    Calculate EMI
+                  </Link>
                 </li>
                 <li>
-                  <a href="#footer">
-                    
-                    Contact Us
-                  </a>
+                  <Link to="/members_list">
+                    Member List
+                  </Link>
                 </li>
                 <li>
-                  <a onClick={() => this.props.logoutUser()}>
+                  <Link to="/member_form">
+                    Add New Member
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" onClick={() => this.props.logoutUser()}>
                     Log Out
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

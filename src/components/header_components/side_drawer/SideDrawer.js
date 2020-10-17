@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "../../../assets/css/SideDrawer.css";
-import { connect } from "react-redux"
-import { logoutUser } from "../../user/actions"
+import { connect } from "react-redux";
+import { logoutUser } from "../../user/actions";
+import { Link } from "react-router-dom";
 
 class SideDrawer extends Component {
   state = {};
@@ -15,30 +16,21 @@ class SideDrawer extends Component {
         <nav className={drawerClasses}>
           <ul>
             <li>
-              <a href="#Home">
-                <h5>
-                  Home
-                </h5>
-              </a>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
             <li>
-              <a href="#About-us">
-                <h5>
-               About sUs
-                </h5>
-              </a>
+              <Link to="/calculate_emi">Calculate EMI</Link>
             </li>
             <li>
-              <a href="#footer">
-                <h5>
-                  Contact Us
-                </h5>
-              </a>
+              <Link to="/members_list">Member List</Link>
             </li>
             <li>
-              <a onClick={() => this.props.logoutUser()}>
+              <Link to="/member_form">Add New Member</Link>
+            </li>
+            <li>
+              <Link to="/" onClick={() => this.props.logoutUser()}>
                 Log Out
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -47,12 +39,8 @@ class SideDrawer extends Component {
   }
 }
 
-
 const mapDispatchToProps = {
   logoutUser,
-}
+};
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(SideDrawer)
+export default connect(null, mapDispatchToProps)(SideDrawer);
