@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 class SideDrawer extends Component {
   state = {};
   render() {
+    const {
+      currentUser: { userType },
+    } = this.props;
     let drawerClasses = "side-drawer";
     if (this.props.show) {
       drawerClasses = "side-drawer open";
@@ -27,6 +30,11 @@ class SideDrawer extends Component {
             <li>
               <Link to="/member_form">Add New Member</Link>
             </li>
+            {userType === "admin" && (
+              <li>
+                <Link to="/signup">Add New Agent</Link>
+              </li>
+            )}
             <li>
               <Link to="/" onClick={() => this.props.logoutUser()}>
                 Log Out
@@ -39,8 +47,12 @@ class SideDrawer extends Component {
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const mapDispatchToProps = {
   logoutUser,
 };
 
-export default connect(null, mapDispatchToProps)(SideDrawer);
+export default connect(mapStateToProps, mapDispatchToProps)(SideDrawer);

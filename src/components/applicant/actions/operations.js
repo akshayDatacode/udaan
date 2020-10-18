@@ -1,7 +1,7 @@
 import axios from "axios"
 import { triggerNotifier } from "../../../services/notifier"
 
-const api = `http://www.localhost:5000/api/`;
+const api = `https://udaan-server-api.azurewebsites.net/api/`;
 
 export const saveApplicant = (user) => dispatch => (
 	axios.post(`${api}add_applicant`, user)

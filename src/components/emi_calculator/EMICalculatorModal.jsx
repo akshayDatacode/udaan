@@ -24,7 +24,7 @@ class EMICalculatorModal extends Component {
                 <th >File Charge:</th>
                 <td><input value={fileCharge} /></td>
               </tr>
-              {userId === "PF001" ? <tr>
+              {userId === "PF0010" ? <tr>
                 <th>Membership Charge</th>
                 <td><input value={membershipCharge} /></td>
               </tr> : <tr>
@@ -36,7 +36,7 @@ class EMICalculatorModal extends Component {
                 <th style={{ backgroundColor: "green", color: "white" }}>DownPayment</th>
                 <td style={{ backgroundColor: "green", color: "white" }}><input value={persentPayment} /></td>
               </tr> */}
-              {userId === "PF001" ? <tr>
+              {userId === "PF0010" ? <tr>
                 <tr>
                   <th style={{ backgroundColor: "blue", color: "white" }}>DownPayment</th>
                   <td style={{ backgroundColor: "blue", color: "white" }}><input value={persentPayment + membershipCharge + fileCharge} /></td>

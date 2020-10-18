@@ -2,7 +2,7 @@ import axios from "axios";
 
 import * as actions from "./actionCreators";
 
-const api = "http://www.localhost:5000/api/";
+const api = "https://udaan-server-api.azurewebsites.net/api/";
 
 export const getapplicants = () => (dispatch) => {
   return axios

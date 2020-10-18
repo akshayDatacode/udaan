@@ -8,10 +8,20 @@ class Home extends Component {
   render() {
     return (
       <>
+
         <div className="row mt-5">
-          <div className="col text-center mt-5">
+          <div className="col text-center">
+            <div>
+              <img
+                className="logo_img"
+                src='https://i.postimg.cc/x104Dyjw/UDAAN-5.png'
+                alt="First slide"
+              />
+            </div>
+            <h3>WellCome to</h3>
             <h1>Udaan Co-Operative Society</h1>
           </div>
+
         </div>
         <div className="row m-5">
           <div className="col-2"></div>
@@ -19,10 +29,6 @@ class Home extends Component {
             <Link to="/dashboard">
               <button className="btn btn-primary btn-lg mr-4">Dashboard</button>
             </Link>
-            <Link to="/calculate_emi">
-              <button className="btn btn-primary btn-lg">Calculate EMI</button>
-            </Link>
-            <div className="btn btn-warning" onClick={() => this.props.logoutUser()}>LogOut</div>
           </div>
           <div className="col-2"></div>
         </div>
