@@ -9,25 +9,26 @@ class ToolBar extends Component {
   state = {};
 
   render() {
+    const { currentUser: { userType } } = this.props
     return (
       <>
-        <header className="toolbar fixed-top">
+        <header className="toolbar fixed-top mb-5">
           <nav className="toolbar_navigation ">
             <div className="toolbar_toggle-button">
               <DrawerToggleButton clickButton={this.props.drawerClickHandler} />
             </div>
-            <div className="toolbar_logo">
+            {/* <div className="toolbar_logo">
               <img
-                className="logo_img "
-                src={require("../../assets/images/udaan_logo.png")}
+                className="logo_img"
+                src='https://i.postimg.cc/x104Dyjw/UDAAN-5.png'
                 alt="First slide"
               />
-            </div>
+            </div> */}
             {/* This is for Logo and Nev Spaccing */}
             <div className="logo-nev-spacer" />
             <div className="toolbar_navigation-items">
               <ul>
-              <li>
+                <li>
                   <Link to="/dashboard">
                     Dashboard
                   </Link>
@@ -47,6 +48,13 @@ class ToolBar extends Component {
                     Add New Member
                   </Link>
                 </li>
+                {userType === 'admin' &&
+                  <li>
+                    <Link to="/signup">
+                      Add New Agent
+                  </Link>
+                  </li>
+                }
                 <li>
                   <Link to="/" onClick={() => this.props.logoutUser()}>
                     Log Out
@@ -60,11 +68,16 @@ class ToolBar extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const mapDispatchToProps = {
   logoutUser,
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(ToolBar)

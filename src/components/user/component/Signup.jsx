@@ -94,16 +94,16 @@ class Signup extends Component {
 
     return (
       <>
-        <div className="row">
+        <div className="row mt-4">
           <div className="col-md-3">
           </div>
           <div className="col-md-6">
             <div className="card mt-5">
-              <h1 className="text-center">Sign Up</h1>
+              <h1 className="text-center mt-5">Create New Agent</h1>
               <center>
                 <form className="justify-content-center w-50">
                   <div className="form-row justify-content-center">
-                    <div className="form-group text-center">
+                    <div className="form-group">
                       <label>UserId</label>
                       <input
                         type="userId"
@@ -174,10 +174,10 @@ class Signup extends Component {
                       Agent
                     </label>
                   </div>
-                  <div className="form-group row ">
+                  <div className="form-group row mt-4">
                     <div className="col text-center">
                       <div onClick={this.handleSubmit}>
-                        <div className="btn btn-primary">Signup</div>
+                        <div className="btn btn-primary">Create Agent</div>
                       </div>
                     </div>
                   </div>
