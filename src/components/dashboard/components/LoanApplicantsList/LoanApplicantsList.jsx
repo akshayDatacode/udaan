@@ -12,7 +12,7 @@ class LoanApplicantsList extends React.Component {
   };
   
   componentDidMount() {
-    this.props.getLoanApplicants().then((res) => {
+    this.props.fetchLoanApplicants().then((res) => {
       if (res && res.success) {
         this.setState({ loanApplicantsData: res.data.loanApplications });
       }
@@ -23,7 +23,7 @@ class LoanApplicantsList extends React.Component {
     const {
       state: { loanApplicantsData },
     } = this;
-
+console.log("state", this.state)
     return (
       <>
         <Helmet>

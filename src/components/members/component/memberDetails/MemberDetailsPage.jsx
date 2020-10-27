@@ -26,7 +26,7 @@ class MemberDetailsPage extends Component {
         <h1 className="mt-5">Member Details</h1>
         <h3>Member Name: {memberName}</h3>
         <h3>Member ID: {memberId}</h3>
-        <Link to="/finance_product_details"><div className="btn btn-primary">Apply For Loan</div></Link>
+        <Link to={`/finance_product_details/${memberId}`}><div className="btn btn-primary">Apply For Loan</div></Link>
       </>
     );
   }

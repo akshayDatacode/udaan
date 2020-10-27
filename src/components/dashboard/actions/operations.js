@@ -17,9 +17,9 @@ export const getapplicants = () => (dispatch) => {
     });
 };
 
-export const getLoanApplicants = () => (dispatch) => {
+export const fetchLoanApplicants = () => (dispatch) => {
   return axios
-    .get(`${api}loan/get_loan_applications`)
+    .get(`${api}loan/fetch_loan_applications`)
     .then(({ data }) => {
       dispatch(actions.setLoanApplicantsData(data));
       console.log(data)

@@ -28,14 +28,16 @@ class LoanApplyForm3 extends Component {
             modelNo,
             noOfInstallment,
             },
-            props: { saveFinanceProductDetails }
+            props: { saveFinanceProductDetails, match: { params: { memberId } } }
         } = this
         const data= {
             loanAmount:loanAmount,
             invoiceNo:invoiceNo,
             modelNo:modelNo,
             noOfInstallment:noOfInstallment,
+            memberId: memberId
         }
+        console.log(data)
         const errors = validateForm3(data)
         if (Object.keys(errors).length) {
             this.setState({ error: errors })
