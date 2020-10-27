@@ -27,7 +27,8 @@ class Modals extends Component {
         const { loanAmount,
             invoiceNo,
             modelNo,
-            noOfInstallment, } = this.props.applicant.financeProductDetails
+            noOfInstallment,
+            memberId } = this.props.applicant.financeProductDetails
         const { chequeNo1,
             chequeNo1Img,
             chequeNo2,
@@ -69,6 +70,7 @@ class Modals extends Component {
             gaurantorName,
             gaurantorPhoneNo,
             gaurantorAddress,
+            memberId,
         }
         await addLoanApplicants(user)
         this.setState({ submit: true })

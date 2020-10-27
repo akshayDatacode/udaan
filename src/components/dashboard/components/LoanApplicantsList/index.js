@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import { getLoanApplicants } from "../../actions";
+import { fetchLoanApplicants } from "../../actions";
 import LoanApplicantsList from "./LoanApplicantsList";
 
 const mapStateToProps = ({ dashboard }) => ({
@@ -9,7 +9,7 @@ const mapStateToProps = ({ dashboard }) => ({
 });
 
 const mapDispatchToProps = {
-  getLoanApplicants,
+  fetchLoanApplicants,
 };
 
 export default withRouter(

@@ -1,5 +1,14 @@
 import React from "react";
 import moment from "moment";
+import {Link} from 'react-router-dom'
+
+const viewOrderFormatter = (cell, row) => (
+  <div className="table-control view">
+    <Link to={`/member_details/${row.memberId}`}>
+      <div className="btn btn-primary">View Member</div>
+    </Link>
+  </div>
+);
 
 export const getColumns = () => [
   {
@@ -9,13 +18,8 @@ export const getColumns = () => [
     formatter: (cell, row) => <span>{moment(row.createdAt).format("L")}</span>,
   },
   {
-    dataField: "applicantName",
-    text: "Name",
-    headerClasses: "table-header priority",
-  },
-  {
-    dataField: "aadhaarNo",
-    text: "Aadhar No",
+    dataField: "modelNo",
+    text: "Model Name",
     headerClasses: "table-header priority",
   },
   {
@@ -27,5 +31,12 @@ export const getColumns = () => [
     dataField: "noOfInstallment",
     text: "No of Installments",
     headerClasses: "table-header priority",
+  },
+  {
+    dataField: "",
+    text: "",
+    align: "right",
+    headerClasses: "table-header view-order",
+    formatter: viewOrderFormatter,
   },
 ];
