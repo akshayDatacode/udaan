@@ -40,3 +40,14 @@ export const getMemberProfile = (memberId) => {
       console.log("get user profile error", error);
     });
 };
+
+// export const getLoanApplicationByMember = (memberId) => {
+//   return axios
+//     .get(`${api}get_loan_application_member`, { memberId })
+//     .then(({ data }) => {
+//       return { success: true, data };
+//     })
+//     .catch((error) => {
+//       console.log("get user profile error", error);
+//     });
+// };

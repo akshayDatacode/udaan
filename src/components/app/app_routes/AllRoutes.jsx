@@ -15,6 +15,7 @@ import MemberForm1 from "../../members/component/memberForm";
 import MemberForm2 from "../../members/component/memberForm/MemberForm2";
 import MemberDetailsPage from "../../members/component/memberDetails/MemberDetailsPage";
 import Signup from "../../user/component/Signup";
+import LoanApplicantDetails from "../../dashboard/components/LoanApplicantsList/LoanApplicantDetails";
 
 const AppRoutes = (props) => {
   return (
@@ -27,6 +28,7 @@ const AppRoutes = (props) => {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/applicants_list" component={ApplicantsList} />
         <Route exact path="/loan_applicants_list" component={LoanApplicantsList} />
+        <Route exact path="/loan_applicant_details/:loanId" component={LoanApplicantDetails} />        
         <Route exact path="/member_form" component={MemberForm1} />
         <Route exact path="/member_form_2" component={MemberForm2} />
         <Route exact path="/member_details/:memberId" component={MemberDetailsPage} />

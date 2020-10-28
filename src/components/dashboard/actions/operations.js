@@ -30,3 +30,15 @@ export const fetchLoanApplicants = () => (dispatch) => {
       dispatch(actions.setApplicantsError(error));
     });
 };
+
+export const getLoanDetails = (loanId) => {
+  return axios
+    .get(`${api}loan/get_loan_application`, {loanId})
+    .then(({ data }) => {
+      console.log(data)
+      return { success: true, data };
+    })
+    .catch((error) => {
+      console.log("get Loan applicants error", error);
+    });
+};

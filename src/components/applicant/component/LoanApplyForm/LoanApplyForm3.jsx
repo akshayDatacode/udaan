@@ -35,7 +35,8 @@ class LoanApplyForm3 extends Component {
             invoiceNo:invoiceNo,
             modelNo:modelNo,
             noOfInstallment:noOfInstallment,
-            memberId: memberId
+            memberId: memberId,
+            loanId: Math.random().toString(36).substr(2, 9),
         }
         console.log(data)
         const errors = validateForm3(data)
