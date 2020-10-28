@@ -18,6 +18,11 @@ class MemberDetailsPage extends Component {
         this.setState({ memberProfile: res.data.member })
       }
     })
+    // getLoanApplicationByMember(memberId).then((res) => {
+    //   if (res && res.success) {
+    //     console.log(res.data.member)
+    //   }
+    // })
   }
   render() {
     const { memberProfile: { memberName, memberId } } = this.state

@@ -4,8 +4,9 @@ import {Link} from 'react-router-dom'
 
 const viewOrderFormatter = (cell, row) => (
   <div className="table-control view">
-    <Link to={`/member_details/${row.memberId}`}>
-      <div className="btn btn-primary">View Member</div>
+    {console.log(row)}
+    <Link to={`loan_applicant_details/${row.loanId}`}>
+      <div className="btn btn-primary">View Application</div>
     </Link>
   </div>
 );
