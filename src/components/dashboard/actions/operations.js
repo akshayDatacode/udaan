@@ -32,8 +32,9 @@ export const fetchLoanApplicants = () => (dispatch) => {
 };
 
 export const getLoanDetails = (loanId) => {
+  console.log("loanId", loanId)
   return axios
-    .get(`${api}loan/get_loan_application`, {loanId})
+    .post(`${api}loan/get_loan_application`, {loanId})
     .then(({ data }) => {
       console.log(data)
       return { success: true, data };
