@@ -33,8 +33,8 @@ const AppRoutes = (props) => {
         <Route exact path="/member_form_2" component={MemberForm2} />
         <Route exact path="/member_details/:memberId" component={MemberDetailsPage} />
         <Route exact path="/finance_product_details/:memberId" component={ApplyLoanForm3} />
-        <Route exact path="/cheque_details" component={ApplyLoanForm4} />
-        <Route exact path="/guarantor_details" component={ApplyLoanForm5} />
+        <Route exact path="/cheque_details/:memberId" component={ApplyLoanForm4} />
+        <Route exact path="/guarantor_details/:memberId" component={ApplyLoanForm5} />
         <Route exact path="/signup" component={Signup} />
       </Switch>
     </>

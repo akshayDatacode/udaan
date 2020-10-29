@@ -57,9 +57,10 @@ class LoanApplyForm3 extends Component {
             isValid,
             error
         } = this.state
+        const {  match: { params: { memberId } } } = this.props
         return (
             isValid ?
-                <Redirect to="/cheque_details"/>
+                <Redirect to={`/cheque_details/${memberId}`}/>
                 :
             <div className="p-5">
                 <h2 className="ml-5 mb-5 mt-5">Finance Product Details</h2>
@@ -88,9 +89,6 @@ class LoanApplyForm3 extends Component {
                      </div>
                 </div>
                 <div className="pt-3 col-md-6">
-                    <Link to="/address_details">
-                        <button type="submit" class="btn btn-primary float-left">Prev</button>
-                    </Link>
                         <button type="submit" class="btn btn-primary float-right" onClick={this.handleNext}>Next</button>
                 </div>
             </div>

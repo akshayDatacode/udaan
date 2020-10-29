@@ -93,16 +93,30 @@ export const validateForm4 = (data) => {
     const error = {}
     if (!data.chequeNo1) {
         error.chequeNo1 = "chequeNo1 required"
+    } else {
+        if (data.chequeNo1.length !== 6){
+            error.chequeNo1 = "Cheque no. must be of 6 digits"
+        }
+        if (!isNumber(data.chequeNo1)){
+            error.chequeNo1 = "Cheque no. must be numerical"
+        }
     }
-    if (!data.chequeNo1Img) {
-        error.chequeNo1Img = "chequeNo1Img required"
-    }
+    // if (!data.chequeNo1Img) {
+    //     error.chequeNo1Img = "chequeNo1Img required"
+    // }
     if (!data.chequeNo2) {
         error.chequeNo2 = "chequeNo2 required"
+    } else {
+        if (data.chequeNo2.length !== 6){
+            error.chequeNo2 = "Cheque no. must be of 6 digits"
+        }
+        if (!isNumber(data.chequeNo2)){
+            error.chequeNo2 = "Cheque no. must be numerical"
+        }
     }
-    if (!data.chequeNo2Img) {
-        error.chequeNo2Img = "chequeNo2Img required"
-    }
+    // if (!data.chequeNo2Img) {
+    //     error.chequeNo2Img = "chequeNo2Img required"
+    // }
     if (!data.bankName) {
         error.bankName = "bankName required"
     }
@@ -111,6 +125,10 @@ export const validateForm4 = (data) => {
     }
     if (!data.IFCSCode) {
         error.IFCSCode = "IFCSCode required"
+    } else {
+        if (data.IFCSCode.length !== 11){
+            error.IFCSCode = "IFSC code must be of 11 digits"
+        }
     }
     return error
 }
