@@ -55,6 +55,7 @@ class LoanApplyForm5 extends Component {
             isValid,
             error
         } = this.state
+        const {  match: { params: { memberId } } } = this.props
         return (
             <div className="p-5">
                 <Modals open={this.state.openModal} handleClose={this.handleClose} />
@@ -75,7 +76,7 @@ class LoanApplyForm5 extends Component {
                     {error.gaurantorAddress && <span class="text-danger">{error.gaurantorAddress}</span>}
                 </div>
                 <div className="pt-3 col-md-6">
-                    <Link to="/cheque_details">
+                    <Link to={`/cheque_details/${memberId}`} >
                         <button type="submit" class="btn btn-primary float-left">Prev</button>
                     </Link>
                     <button type="submit" class="btn btn-primary float-right" onClick={this.handleNext}>Submit</button>

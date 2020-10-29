@@ -37,9 +37,9 @@ class LoanApplyForm4 extends Component {
         } = this
         const data = {
             chequeNo1: chequeNo1,
-            chequeNo1Img: chequeNo1Img,
+            //chequeNo1Img: chequeNo1Img,
             chequeNo2: chequeNo2,
-            chequeNo2Img: chequeNo2Img,
+            //chequeNo2Img: chequeNo2Img,
             bankName: bankName,
             accountNo: accountNo,
             IFCSCode: IFCSCode,
@@ -65,9 +65,10 @@ class LoanApplyForm4 extends Component {
             error,
             isValid
         } = this.state
+        const {  match: { params: { memberId } } } = this.props
         return (
             isValid ?
-                <Redirect to="guarantor_details" />
+                <Redirect to={`/guarantor_details/${memberId}`} />
                 :
                 <div className="p-5">
                     <h2 className="ml-5 mb-5 mt-5">Cheque Details</h2>
@@ -77,11 +78,11 @@ class LoanApplyForm4 extends Component {
                             <input type="text" class="form-control" name="chequeNo1" value={chequeNo1} onChange={this.handleChange} placeholder="Cheque No 1" />
                             {error.chequeNo1 && <span class="text-danger">{error.chequeNo1}</span>}
                         </div>
-                        <div class="form-group col-md-2">
+                        {/* <div class="form-group col-md-2">
                             <label>Cheque Image</label>
                             <input type="text" class="form-control" name="chequeNo1Img" value={chequeNo1Img} onChange={this.handleChange} placeholder="img" />
                             {error.chequeNo1Img && <span class="text-danger">{error.chequeNo1Img}</span>}
-                        </div>
+                        </div> */}
                     </div>
                     <div className="form-row">
                         <div class="form-group col-md-4">
@@ -89,12 +90,12 @@ class LoanApplyForm4 extends Component {
                             <input type="text" class="form-control" name="chequeNo2" value={chequeNo2} onChange={this.handleChange} placeholder="Cheque No 2" />
                             {error.chequeNo2 && <span class="text-danger">{error.chequeNo2}</span>}
                         </div>
-                        <div class="form-group col-md-2">
-                            <label>Cheque Image</label>
-                            <input type="text" class="form-control" name="chequeNo2Img" value={chequeNo2Img} onChange={this.handleChange} placeholder="img" />
-                            {error.chequeNo2Img && <span class="text-danger">{error.chequeNo2Img}</span>}
-                        </div>
-                    </div>
+                    {/*    <div class="form-group col-md-2">
+                         <label>Cheque Image</label>
+                         <input type="text" class="form-control" name="chequeNo2Img" value={chequeNo2Img} onChange={this.handleChange} placeholder="img" />
+                         {error.chequeNo2Img && <span class="text-danger">{error.chequeNo2Img}</span>}
+                     </div> */}
+                     </div>
                     <div class="form-group col-md-6">
                         <label>Bank Name</label>
                         <input type="text" class="form-control" name="bankName" value={bankName} onChange={this.handleChange} placeholder="Bank Name" />
@@ -113,7 +114,7 @@ class LoanApplyForm4 extends Component {
                         </div>
                     </div>
                     <div className="pt-3 col-md-6">
-                        <Link to="/finance_product_details">
+                        <Link to={`/finance_product_details/${memberId}`}>
                             <button type="submit" class="btn btn-primary float-left">Prev</button>
                         </Link>
                         <button type="submit" class="btn btn-primary float-right" onClick={this.handleNext}>Next</button>
