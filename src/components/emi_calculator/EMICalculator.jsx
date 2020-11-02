@@ -27,7 +27,7 @@ class EMICalculator extends Component {
     const { currentUser: { userId } } = this.props
 
 
-    if (userId === "PF001") {
+    if (userId === "PF0010") {
       console.log("Pankaj", userId)
       const emiAmount =
         (invoiceAmount - (invoiceAmount / 100) * 34) / noOfInstallment;
@@ -68,6 +68,17 @@ class EMICalculator extends Component {
         this.setState({
           fileCharge: parseInt(1194),
           stampCharge: parseInt(322),
+          emiAmount: emiAmount,
+          persentPayment: persentPayment,
+        });
+      }
+      if (invoiceAmount >= 20001 && invoiceAmount <= 30000) {
+        const emiAmount =
+          (invoiceAmount - (invoiceAmount / 100) * 38.25) / noOfInstallment;
+        const persentPayment = (invoiceAmount / 100) * 38.25;
+        this.setState({
+          fileCharge: parseInt(1762),
+          stampCharge: parseInt(634),
           emiAmount: emiAmount,
           persentPayment: persentPayment,
         });
