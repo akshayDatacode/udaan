@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
+import CustomLoader from '../../../services/CustomLoader'
 import { loginUser } from "../actions"
 import { validMail } from './helper'
 
@@ -55,43 +56,48 @@ class Login extends Component {
     return (
       <>
         <div className="mx-0 d-flex justify-content-center centered">
-          <div className="border rounded shadow p-4">
-            <h1 className="text-center">Login</h1>
-            <form className='px-3'>
-              <div className="form-group">
-                <label>userId</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="userId"
-                  value={userId}
-                  name="userId"
-                  placeholder=""
-                  onChange={this.handleChange}
-                />
-                {error.includes("Invalid userId") && <span className="text-danger">Invalid userId Format</span>}
-              </div>
-              <div className="form-group">
-                <label>Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  value={password}
-                  name="password"
-                  placeholder="xxxxxx"
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="row mx-0">
-                <div className="col-12 text-center">
-                  <div onClick={this.handleSubmit}>
-                    <div className="btn btn-primary">Login</div>
+          {
+            this.props.userAuthLoading ?
+              <CustomLoader />
+              :
+              <div className="border rounded shadow p-4">
+                <h1 className="text-center">Login</h1>
+                <form className='px-3'>
+                  <div className="form-group">
+                    <label>userId</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="userId"
+                      value={userId}
+                      name="userId"
+                      placeholder=""
+                      onChange={this.handleChange}
+                    />
+                    {error.includes("Invalid userId") && <span className="text-danger">Invalid userId Format</span>}
                   </div>
-                </div>
+                  <div className="form-group">
+                    <label>Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="password"
+                      value={password}
+                      name="password"
+                      placeholder="xxxxxx"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="row mx-0">
+                    <div className="col-12 text-center">
+                      <div onClick={this.handleSubmit}>
+                        <div className="btn btn-primary">Login</div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
-            </form>
-          </div>
+          }
         </div>
       </>
     );
@@ -102,7 +108,11 @@ const mapDispatchToProps = {
   loginUser,
 }
 
+const mapStateToProps = ({ user }) => ({
+  userAuthLoading: user.userAuthLoading,
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Login)
