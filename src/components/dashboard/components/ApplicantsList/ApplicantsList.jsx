@@ -10,7 +10,7 @@ class ApplicantsList extends React.Component {
   state = {
     applicantsData: [],
   };
-  
+
   componentDidMount() {
     this.props.getapplicants().then((res) => {
       if (res && res.success) {
@@ -30,10 +30,12 @@ class ApplicantsList extends React.Component {
         <Helmet>
           <title>Udann</title>
         </Helmet>
-        <div className="row">
-          <div className="col">
-            <h2>Applicants List</h2>
-            <Table tableData={applicantsData} columns={columns}/>
+        <div className="row mx-0">
+          <div className="col-12 p-0">
+            <h2 className="p-4 border-bottom shadow">Applicants List</h2>
+            <div className="px-3 mt-5">
+              <Table tableData={applicantsData} columns={columns} />
+            </div>
           </div>
         </div>
       </>

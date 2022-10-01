@@ -10,7 +10,7 @@ class MembersList extends React.Component {
   state = {
     membersData: [],
   };
-  
+
   componentDidMount() {
     this.props.fetchMembers().then((res) => {
       if (res && res.success) {
@@ -31,8 +31,10 @@ class MembersList extends React.Component {
         </Helmet>
         <div className="row">
           <div className="col">
-            <h2 className="mt-5 mb-4">Members List</h2>
-            <Table tableData={membersData} columns={columns}/>
+            <h2 className="p-4 border-bottom shadow">Members List</h2>
+            <div className="mt-5 px-3">
+              <Table tableData={membersData} columns={columns} />
+            </div>
           </div>
         </div>
       </>

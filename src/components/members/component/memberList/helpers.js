@@ -15,7 +15,7 @@ export const getColumns = () => [
     dataField: "createdAt",
     text: "Inquery Date",
     headerClasses: "table-header priority",
-    formatter: (cell, row) => <span>{moment(row.createdAt).format("L")}</span>,
+    formatter: (cell, row) => <span>{moment(row.createdAt).format("LL")}</span>,
   },
   {
     dataField: "memberName",

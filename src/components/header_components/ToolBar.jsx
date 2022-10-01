@@ -18,13 +18,15 @@ class ToolBar extends Component {
               <DrawerToggleButton clickButton={this.props.drawerClickHandler} />
             </div>
             <div className="toolbar_logo">
-              <img
-                className="img-fluid"
-                height='20px'
-                width='130px'
-                src='http://res.cloudinary.com/datacode/image/upload/v1664618153/ejeoewy0nssk5zhh8eze.png'
-                alt="First slide"
-              />
+              <Link to='/'>
+                <img
+                  className="img-fluid"
+                  height='20px'
+                  width='130px'
+                  src='http://res.cloudinary.com/datacode/image/upload/v1664618153/ejeoewy0nssk5zhh8eze.png'
+                  alt="First slide"
+                />
+              </Link>
             </div>
             {/* This is for Logo and Nev Spaccing */}
             <div className="logo-nev-spacer" />
