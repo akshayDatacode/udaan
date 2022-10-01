@@ -19,7 +19,7 @@ import LoanApplicantDetails from "../../dashboard/components/LoanApplicantsList/
 
 const AppRoutes = (props) => {
   return (
-
+    
     <>
       <Switch>
         <Route exact path="/" component={Home} />
