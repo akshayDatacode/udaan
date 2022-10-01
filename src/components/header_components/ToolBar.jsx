@@ -12,18 +12,20 @@ class ToolBar extends Component {
     const { currentUser: { userType } } = this.props
     return (
       <>
-        <header className="toolbar fixed-top mb-5">
+        <header className="toolbar fixed-top mb-5 p-2">
           <nav className="toolbar_navigation ">
             <div className="toolbar_toggle-button">
               <DrawerToggleButton clickButton={this.props.drawerClickHandler} />
             </div>
-            {/* <div className="toolbar_logo">
+            <div className="toolbar_logo">
               <img
-                className="logo_img"
-                src='https://i.postimg.cc/x104Dyjw/UDAAN-5.png'
+                className="img-fluid"
+                height='20px'
+                width='130px'
+                src='http://res.cloudinary.com/datacode/image/upload/v1664618153/ejeoewy0nssk5zhh8eze.png'
                 alt="First slide"
               />
-            </div> */}
+            </div>
             {/* This is for Logo and Nev Spaccing */}
             <div className="logo-nev-spacer" />
             <div className="toolbar_navigation-items">
@@ -52,7 +54,7 @@ class ToolBar extends Component {
                   <li>
                     <Link to="/signup">
                       Add New Agent
-                  </Link>
+                    </Link>
                   </li>
                 }
                 <li>

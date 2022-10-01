@@ -11,13 +11,13 @@ class Home extends Component {
 
         <div className="row mt-5">
           <div className="col text-center">
-            <div>
-              <img
-                className="logo_img"
-                src='https://i.postimg.cc/x104Dyjw/UDAAN-5.png'
-                alt="First slide"
-              />
-            </div>
+            <img
+              className="img-fluid"
+              height='20px'
+              width='230px'
+              src='http://res.cloudinary.com/datacode/image/upload/v1664618153/ejeoewy0nssk5zhh8eze.png'
+              alt="First slide"
+            />
             <h3>WellCome to</h3>
             <h1>Udaan Co-Operative Society</h1>
           </div>
