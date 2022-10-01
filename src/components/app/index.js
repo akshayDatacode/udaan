@@ -1,23 +1,32 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import jwtDecode from "jwt-decode";
+
 import AppRoutes from "./app_routes/AllRoutes";
 import AuthRoutes from "./app_routes/AuthRoutes"
-import { connect } from "react-redux";
-import { setLoginUser } from "../user/actions";
 import IndexHeaderComponent from "../header_components/IndexHeaderComponent";
 
+import { setLoginUser } from "../user/actions";
+
+import '../../assets/scss/style.scss'
+
 class App extends Component {
-  state = {
-    currentUser: null
-  }
 
   componentDidMount() {
-
-    const getDataFromLocalStorage = localStorage.getItem("userDetails");
-    const parseDataFromJSON = JSON.parse(getDataFromLocalStorage);
-    console.log("Local Storage Data", parseDataFromJSON);
-    // this.setState({ currentUser: parseDataFromJSON });
-
-    this.props.setLoginUser(parseDataFromJSON)
+    try {
+      const jwt = localStorage.getItem("access_token");
+      if (jwt) {
+        let jwtTokenUser = {
+          ...jwtDecode(jwt),
+          token: jwt
+        }
+        if (jwtTokenUser) {
+          this.props.setLoginUser(jwtTokenUser)
+        } else {
+          this.props.history('/login')
+        }
+      }
+    } catch (ex) { }
   }
 
   render() {

@@ -4,7 +4,8 @@ import { createReducer } from "../../../core/reduxUtils";
 
 const initialState = {
   currentUser: null,
-  error: null
+  error: null,
+  userAuthLoading: false,
 }
 
 const handlers = {

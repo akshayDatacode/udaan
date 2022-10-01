@@ -12,7 +12,6 @@ class EMICalculatorModal extends Component {
     
     return (
       <>
-        {console.log("rrrrrrr.....",userId)}
         <div className="detail_content plan_box p-2">
           <Table striped bordered hover responsive>
             <tbody>
