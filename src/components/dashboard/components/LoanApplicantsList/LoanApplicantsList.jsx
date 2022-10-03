@@ -10,7 +10,7 @@ class LoanApplicantsList extends React.Component {
   state = {
     loanApplicantsData: [],
   };
-  
+
   componentDidMount() {
     this.props.fetchLoanApplicants().then((res) => {
       if (res && res.success) {
@@ -23,7 +23,7 @@ class LoanApplicantsList extends React.Component {
     const {
       state: { loanApplicantsData },
     } = this;
-console.log("state", this.state)
+    console.log("state", this.state)
     return (
       <>
         <Helmet>
@@ -31,8 +31,10 @@ console.log("state", this.state)
         </Helmet>
         <div className="row">
           <div className="col">
-            <h2 className="mt-5 mb-4">Loan Applications List</h2>
-            <Table tableData={loanApplicantsData} columns={columns}/>
+            <h2 className="p-4 border-bottom shadow">Loan Applications List</h2>
+            <div className="px-3 mt-5">
+              <Table tableData={loanApplicantsData} columns={columns} />
+            </div>
           </div>
         </div>
       </>

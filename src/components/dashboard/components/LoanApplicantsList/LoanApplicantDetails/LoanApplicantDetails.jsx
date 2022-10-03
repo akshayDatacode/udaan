@@ -29,10 +29,18 @@ class LoanApplicantDetails extends Component {
     const { loanDetails: { modelNo, loanId } } = this.state
     return (
       <>
-        <h1 className="mt-5">Member Details</h1>
-        <h3>MOdel No.: {modelNo}</h3>
-        <h3>Member ID: {loanId}</h3>
-        <Link to={`/finance_product_details/${loanId}`}><div className="btn btn-primary">Apply For Loan</div></Link>
+        <div className="row mx-0">
+          <div className="col-12 p-0">
+            <h1 className="p-4 border-bottom shadow">Member Details</h1>
+            <div className="row mx-0">
+              <div className="col-12">
+                <h3>Model No.: {modelNo}</h3>
+                <h3>Member Id: {loanId}</h3>
+                <Link to={`/finance_product_details/${loanId}`}><div className="btn btn-primary">Apply For Loan</div></Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     );
   }
